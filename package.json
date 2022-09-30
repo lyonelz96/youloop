@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "Lyonel Zamora",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint_d": "^12.2.1"
+  }
 }
