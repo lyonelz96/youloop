@@ -1,0 +1,12 @@
+{
+  "name": "youloop",
+  "version": "1.0.0",
+  "description": "Loop sections of youtube videos to practice music",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Lyonel Zamora",
+  "license": "ISC"
+}
