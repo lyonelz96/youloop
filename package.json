@@ -10,6 +10,7 @@
   "author": "Lyonel Zamora",
   "license": "ISC",
   "devDependencies": {
+    "@fsouza/prettierd": "^0.22.2",
     "eslint_d": "^12.2.1"
   }
 }
