@@ -1,0 +1,6 @@
+{
+    "manifest_version": 2,
+    "name": "YouLoop",
+    "version": "1.0",
+    "description": "Loop sections of youtube videos to practice music"
+}
