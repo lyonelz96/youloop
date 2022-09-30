@@ -2,5 +2,9 @@
     "manifest_version": 2,
     "name": "YouLoop",
     "version": "1.0",
-    "description": "Loop sections of youtube videos to practice music"
+    "description": "Loop sections of youtube videos to practice music",
+    "icons": {
+        "48": "./icons/loop-48.png",
+        "96": "./icons/loop-96.png"
+    }
 }
