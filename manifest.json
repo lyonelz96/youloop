@@ -6,5 +6,16 @@
     "icons": {
         "48": "./icons/loop-48.png",
         "96": "./icons/loop-96.png"
+    },
+    "permissions": ["storage"],
+    "page_action": {
+        "browser_style": true,
+        "default_icon": {
+            "19": "./src/popup/icons/loop-19.png",
+            "38": "./src/popup/icons/loop-38.png"
+        },
+        "default_title": "YouLoop",
+        "default_popup": "./src/popup/popup.html",
+        "show_matches": ["https://www.youtube.com/watch?*"]
     }
 }

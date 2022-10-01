@@ -1,0 +1,34 @@
+body {
+    background-color: #1f1f28;
+}
+
+#popup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    margin: 1rem;
+}
+
+label[for='loop-default-enable'] {
+    color: #dcd7ba;
+}
+
+input[id='loop-default-enable'] {
+    accent-color: #98bb6c;
+}
+
+#loop-toggle-btn {
+    padding: 4px;
+    text-align: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: #938aa9;
+    color: #1f1f28;
+}
+
+#loop-toggle-btn:hover {
+    background-color: #957fb8;
+}
