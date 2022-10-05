@@ -1,10 +1,10 @@
 const default_enable_checkbox = document.querySelector(
-    'input[id="loop-default-enable"][type="checkbox"]'
+    'input[id="youloop-default-enable"][type="checkbox"]'
 );
 
 async function getLoopDefaultEnable() {
     const local_obj = await browser.storage.local.get();
-    return local_obj['loop-default-enable'];
+    return local_obj['youloop-default-enable'];
 }
 
 async function setLoopDefaultEnable() {
@@ -14,10 +14,14 @@ async function setLoopDefaultEnable() {
 
 default_enable_checkbox.addEventListener('change', async () => {
     await browser.storage.local.set({
-        'loop-default-enable': default_enable_checkbox.checked,
+        'youloop-default-enable': default_enable_checkbox.checked,
     });
 
     await setLoopDefaultEnable();
 });
+
+const toggle_btn = document.querySelector('#youloop-toggle-btn');
+
+
 
 setLoopDefaultEnable();

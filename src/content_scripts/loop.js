@@ -76,7 +76,7 @@ function buildLoopComponent() {
 
 async function init() {
     const local_obj = await browser.storage.local.get();
-    const enabled = local_obj['loop-default-enable'];
+    const enabled = local_obj['youloop-default-enable'];
 
     if (enabled) {
         insertYouLoopContainer();

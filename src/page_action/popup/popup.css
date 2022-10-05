@@ -12,15 +12,15 @@ body {
     margin: 1rem;
 }
 
-label[for='loop-default-enable'] {
+label[for='youloop-default-enable'] {
     color: #dcd7ba;
 }
 
-input[id='loop-default-enable'] {
+input[id='youloop-default-enable'] {
     accent-color: #98bb6c;
 }
 
-#loop-toggle-btn {
+#youloop-toggle-btn {
     padding: 4px;
     text-align: center;
     font-size: 1.2rem;
@@ -29,6 +29,6 @@ input[id='loop-default-enable'] {
     color: #1f1f28;
 }
 
-#loop-toggle-btn:hover {
+#youloop-toggle-btn:hover {
     background-color: #957fb8;
 }
