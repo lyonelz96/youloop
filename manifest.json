@@ -16,6 +16,12 @@
         },
         "default_title": "YouLoop",
         "default_popup": "./src/page_action/popup/popup.html",
-        "show_matches": ["https://www.youtube.com/watch?*"]
-    }
+        "show_matches": ["https://www.youtube.com/watch?v*"]
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.youtube.com/watch?v*"],
+            "js": ["./src/content_scripts/loop.js"]
+        }
+    ]
 }
