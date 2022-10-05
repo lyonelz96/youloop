@@ -42,6 +42,12 @@ function buildYouLoopContainer() {
     return template.content.firstElementChild;
 }
 
+function toggleYouLoopContainer() {
+    const youloop_container = document.querySelector('#youloop-container');
+
+    youloop_container.hidden = !youloop_container.hidden;
+}
+
 function buildLoopComponent() {
     const style = `
         display: flex;
@@ -66,8 +72,7 @@ function buildLoopComponent() {
             <div>
                 <label for="youloop-loop-end">End 0:00</label>
                 <br>
-                <input type="range" id="youloop-loop-end" name="youloop-loop-end">
-            </div>
+                <input type="range" id="youloop-loop-end" name="youloop-loop-end"> </div>
         </div>
     `;
 
@@ -84,3 +89,15 @@ async function init() {
 }
 
 init();
+
+browser.runtime.onMessage.addListener(async (msg) => {
+    if (msg.toggle) {
+        const youloop_container = document.querySelector('#youloop-container');
+
+        if (!youloop_container) {
+            insertYouLoopContainer();
+        } else {
+            toggleYouLoopContainer();
+        }
+    }
+});

@@ -7,7 +7,7 @@
         "48": "./icons/loop-48.png",
         "96": "./icons/loop-96.png"
     },
-    "permissions": ["storage"],
+    "permissions": ["storage", "tabs"],
     "page_action": {
         "browser_style": true,
         "default_icon": {

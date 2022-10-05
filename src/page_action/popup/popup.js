@@ -20,8 +20,17 @@ default_enable_checkbox.addEventListener('change', async () => {
     await setLoopDefaultEnable();
 });
 
+setLoopDefaultEnable();
+
 const toggle_btn = document.querySelector('#youloop-toggle-btn');
 
+toggle_btn.addEventListener('click', async () => {
+    const tabs = await browser.tabs.query({
+        active: true,
+        currentWindow: true,
+    });
 
-
-setLoopDefaultEnable();
+    browser.tabs.sendMessage(tabs[0].id, {
+        toggle: true,
+    });
+});
