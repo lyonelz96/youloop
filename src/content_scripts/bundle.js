@@ -42,42 +42,46 @@ const Components = [require('../components/loop/main')];
 module.exports = { Components };
 
 },{"../components/loop/main":1}],4:[function(require,module,exports){
-const utils = require('./utils');
+const { ContentScriptUtils } = require('./utils');
 
 function onMessage() {
     browser.runtime.onMessage.addListener((msg) => {
         if (msg.toggle) {
-            const youloop_container = utils.getYouLoopContainer();
+            const youloop_container = ContentScriptUtils.getYouLoopContainer();
 
             if (!youloop_container) {
-                utils.insertYouLoopContainer();
+                ContentScriptUtils.insertYouLoopContainer();
             } else {
-                utils.toggleYouLoopContainer();
+                ContentScriptUtils.toggleYouLoopContainer();
             }
         }
     });
 }
 
-module.exports = { onMessage };
+const ContentScriptListeners = {
+    onMessage,
+};
+
+module.exports = { ContentScriptListeners };
 
 },{"./utils":6}],5:[function(require,module,exports){
-const utils = require('./utils');
-const listeners = require('./listeners');
+const { ContentScriptUtils } = require('./utils');
+const { ContentScriptListeners } = require('./listeners');
+const { GlobalUtils } = require('../utils.js');
 
 async function init() {
-    const local_obj = await browser.storage.local.get();
-    const enabled = local_obj['youloop-default-enable'];
+    const enabled = await GlobalUtils.getLoopDefaultEnable();
 
     if (enabled) {
-        utils.insertYouLoopContainer();
+        ContentScriptUtils.insertYouLoopContainer();
     }
 
-    listeners.onMessage();
+    ContentScriptListeners.onMessage();
 }
 
 init();
 
-},{"./listeners":4,"./utils":6}],6:[function(require,module,exports){
+},{"../utils.js":7,"./listeners":4,"./utils":6}],6:[function(require,module,exports){
 function insertYouLoopContainer() {
     const youloop_container = getYouLoopContainer();
 
@@ -133,11 +137,32 @@ function getYouLoopContainer() {
     return document.querySelector('#youloop-container');
 }
 
-module.exports = {
+const ContentScriptUtils = {
     insertYouLoopContainer,
     buildYouLoopContainer,
     toggleYouLoopContainer,
     getYouLoopContainer,
 };
 
-},{"./components/main":3}]},{},[5]);
+module.exports = { ContentScriptUtils };
+
+},{"./components/main":3}],7:[function(require,module,exports){
+async function getLoopDefaultEnable() {
+    const local_obj = await browser.storage.local.get();
+    return local_obj['youloop-default-enable'];
+}
+
+async function setLoopDefaultEnable(checked) {
+    await browser.storage.local.set({
+        'youloop-default-enable': checked,
+    });
+}
+
+const GlobalUtils = {
+    getLoopDefaultEnable,
+    setLoopDefaultEnable,
+};
+
+module.exports = { GlobalUtils };
+
+},{}]},{},[5]);

@@ -1,15 +1,15 @@
-const utils = require('./utils');
-const listeners = require('./listeners');
+const { ContentScriptUtils } = require('./utils');
+const { ContentScriptListeners } = require('./listeners');
+const { GlobalUtils } = require('../utils.js');
 
 async function init() {
-    const local_obj = await browser.storage.local.get();
-    const enabled = local_obj['youloop-default-enable'];
+    const enabled = await GlobalUtils.getLoopDefaultEnable();
 
     if (enabled) {
-        utils.insertYouLoopContainer();
+        ContentScriptUtils.insertYouLoopContainer();
     }
 
-    listeners.onMessage();
+    ContentScriptListeners.onMessage();
 }
 
 init();

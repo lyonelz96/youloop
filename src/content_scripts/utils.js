@@ -53,9 +53,11 @@ function getYouLoopContainer() {
     return document.querySelector('#youloop-container');
 }
 
-module.exports = {
+const ContentScriptUtils = {
     insertYouLoopContainer,
     buildYouLoopContainer,
     toggleYouLoopContainer,
     getYouLoopContainer,
 };
+
+module.exports = { ContentScriptUtils };

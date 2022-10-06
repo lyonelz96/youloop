@@ -1,17 +1,21 @@
-const utils = require('./utils');
+const { ContentScriptUtils } = require('./utils');
 
 function onMessage() {
     browser.runtime.onMessage.addListener((msg) => {
         if (msg.toggle) {
-            const youloop_container = utils.getYouLoopContainer();
+            const youloop_container = ContentScriptUtils.getYouLoopContainer();
 
             if (!youloop_container) {
-                utils.insertYouLoopContainer();
+                ContentScriptUtils.insertYouLoopContainer();
             } else {
-                utils.toggleYouLoopContainer();
+                ContentScriptUtils.toggleYouLoopContainer();
             }
         }
     });
 }
 
-module.exports = { onMessage };
+const ContentScriptListeners = {
+    onMessage,
+};
+
+module.exports = { ContentScriptListeners };
