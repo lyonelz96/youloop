@@ -4,7 +4,8 @@
   "description": "Loop sections of youtube videos to practice music",
   "main": "index.js",
   "scripts": {
-      "browserify": "./scripts/browserify.sh"
+      "browserify": "./scripts/browserify.sh",
+      "dev": "npx web-ext run"
   },
   "keywords": [],
   "author": "Lyonel Zamora",
