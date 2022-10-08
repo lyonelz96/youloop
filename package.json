@@ -16,5 +16,8 @@
         "chokidar-cli": "^3.0.0",
         "eslint_d": "^12.2.1",
         "web-ext": "^7.2.0"
+    },
+    "dependencies": {
+        "hh-mm-ss": "^1.2.0"
     }
 }

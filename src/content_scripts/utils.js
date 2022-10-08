@@ -53,11 +53,16 @@ function getYouLoopContainer() {
     return document.querySelector('#youloop-container');
 }
 
+function getYoutubeVideo() {
+    return document.querySelector('video');
+}
+
 const ContentScriptUtils = {
     insertYouLoopContainer,
     buildYouLoopContainer,
     toggleYouLoopContainer,
     getYouLoopContainer,
+    getYoutubeVideo,
 };
 
 module.exports = { ContentScriptUtils };
