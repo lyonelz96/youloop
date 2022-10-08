@@ -67,15 +67,41 @@ function getInnerHTML() {
 }
 
 function getRangesInputEl(LoopComponent) {
-    const start = LoopComponent.querySelector('#youloop-loop-start');
-    const end = LoopComponent.querySelector('#youloop-loop-end');
+    let start = null;
+    let end = null;
+
+    if (LoopComponent) {
+        start = LoopComponent.querySelector('#youloop-loop-start');
+        end = LoopComponent.querySelector('#youloop-loop-end');
+    } else {
+        start = document.querySelector('#youloop-loop-start');
+        end = document.querySelector('#youloop-loop-end');
+    }
 
     return [start, end];
+}
+
+function getLoopCheckbox(LoopComponent) {
+    let checkbox = null;
+
+    if (LoopComponent) {
+        checkbox = LoopComponent.querySelector('#youloop-loop');
+    } else {
+        checkbox = document.querySelector('#youloop-loop');
+    }
+
+    return checkbox;
+}
+
+function getLoopComponentContainer() {
+    return document.querySelector('#youloop-loop-container');
 }
 
 const LoopComponentUtils = {
     buildLoopComponent,
     getRangesInputEl,
+    getLoopComponentContainer,
+    getLoopCheckbox,
 };
 
 module.exports = { LoopComponentUtils };
