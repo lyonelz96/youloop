@@ -1,17 +1,20 @@
 {
-  "name": "youloop",
-  "version": "1.0.0",
-  "description": "Loop sections of youtube videos to practice music",
-  "main": "index.js",
-  "scripts": {
-      "browserify": "./scripts/browserify.sh",
-      "dev": "npx web-ext run"
-  },
-  "keywords": [],
-  "author": "Lyonel Zamora",
-  "license": "ISC",
-  "devDependencies": {
-    "@fsouza/prettierd": "^0.22.2",
-    "eslint_d": "^12.2.1"
-  }
+    "name": "youloop",
+    "version": "1.0.0",
+    "description": "Loop sections of youtube videos to practice music",
+    "main": "index.js",
+    "scripts": {
+        "browserify": "./scripts/browserify.sh",
+        "dev": "web-ext run",
+        "watch": "npm run browserify && chokidar './src/**/*.js' -i './src/**/bundle.js' -c 'npm run browserify'"
+    },
+    "keywords": [],
+    "author": "Lyonel Zamora",
+    "license": "ISC",
+    "devDependencies": {
+        "@fsouza/prettierd": "^0.22.2",
+        "chokidar-cli": "^3.0.0",
+        "eslint_d": "^12.2.1",
+        "web-ext": "^7.2.0"
+    }
 }
