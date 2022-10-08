@@ -7,7 +7,9 @@ function getDefaultEnableCheckbox() {
 }
 
 async function toggleDefaultEnableCheckbox() {
-    const checked = await GlobalUtils.getLoopDefaultEnable();
+    const checked = await GlobalUtils.getLoopDefaultEnable().catch(
+        GlobalUtils.errorLogger
+    );
     getDefaultEnableCheckbox().checked = checked ? true : false;
 }
 

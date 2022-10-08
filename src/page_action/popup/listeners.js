@@ -8,7 +8,7 @@ function onChange() {
         default_enable_checkbox.addEventListener('change', async () => {
             await GlobalUtils.setLoopDefaultEnable(
                 default_enable_checkbox.checked
-            );
+            ).catch(GlobalUtils.errorLogger);
         });
     }
 
@@ -18,10 +18,12 @@ function onChange() {
 function onClick() {
     function ToggleButton() {
         PopupUtils.getToggleButton().addEventListener('click', async () => {
-            const tabs = await browser.tabs.query({
-                active: true,
-                currentWindow: true,
-            });
+            const tabs = await browser.tabs
+                .query({
+                    active: true,
+                    currentWindow: true,
+                })
+                .catch(GlobalUtils.errorLogger);
 
             browser.tabs.sendMessage(tabs[0].id, {
                 toggle: true,
