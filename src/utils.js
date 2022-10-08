@@ -4,9 +4,11 @@ async function getLoopDefaultEnable() {
 }
 
 async function setLoopDefaultEnable(checked) {
-    await browser.storage.local.set({
-        'youloop-default-enable': checked,
-    }).catch(errorLogger);
+    await browser.storage.local
+        .set({
+            'youloop-default-enable': checked,
+        })
+        .catch(errorLogger);
 }
 
 function errorLogger(e) {
