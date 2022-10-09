@@ -1,6 +1,8 @@
 const { ContentScriptUtils } = require('../../utils');
 const { LoopComponentUtils } = require('./utils');
 
+const ids = {};
+
 function LoopInterval() {
     const video = ContentScriptUtils.getYoutubeVideo();
 
@@ -26,6 +28,7 @@ function LoopInterval() {
             const loop_container =
                 LoopComponentUtils.getLoopComponentContainer();
             loop_container.setAttribute('loop-interval-id', id);
+            ids['loop-interval-id'] = id;
         }
     }, 0);
 }
@@ -44,9 +47,16 @@ function setIntervals() {
     }
 }
 
+function clearIntervals() {
+    for (let id of Object.values(ids)) {
+        clearInterval(id);
+    }
+}
+
 const LoopComponentIntervals = {
     setIntervals,
-    getLoopIntervalId
+    getLoopIntervalId,
+    clearIntervals,
 };
 
 module.exports = { LoopComponentIntervals };
