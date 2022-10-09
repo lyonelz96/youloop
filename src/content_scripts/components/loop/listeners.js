@@ -2,26 +2,41 @@ const { LoopComponentUtils } = require('./utils');
 const TimeFormat = require('hh-mm-ss');
 const { LoopComponentIntervals } = require('./intervals');
 
-function onInput(LoopComponent) {
+function onInput() {
     function LoopRanges() {
-        const ranges = LoopComponentUtils.getRangesInputEl(LoopComponent);
+        const ranges = LoopComponentUtils.getRangesInputEl();
+
+        function getNewTime(val) {
+            return TimeFormat.fromS(Number(val));
+        }
 
         for (let range of ranges) {
             range.addEventListener('input', () => {
                 const label = range.labels[0];
-                const newTime = TimeFormat.fromS(Number(range.value));
 
                 if (label.innerText.includes('Start')) {
-                    label.innerText = `Start ${newTime}`;
+                    const endVal = Number(ranges[1].value);
+
+                    if (Number(range.value) >= endVal) {
+                        range.value = String(Number(endVal - 1));
+                    }
+
+                    label.innerText = `Start ${getNewTime(range.value)}`;
                 } else if (label.innerText.includes('End')) {
-                    label.innerText = `End ${newTime}`;
+                    const startVal = Number(ranges[0].value);
+
+                    if (Number(range.value) <= startVal) {
+                        range.value = String(Number(startVal + 1));
+                    }
+
+                    label.innerText = `End ${getNewTime(range.value)}`;
                 }
             });
         }
     }
 
     function LoopCheckbox() {
-        const checkbox = LoopComponentUtils.getLoopCheckbox(LoopComponent);
+        const checkbox = LoopComponentUtils.getLoopCheckbox();
 
         checkbox.addEventListener('input', () => {
             const loop_interval_id = LoopComponentIntervals.getLoopIntervalId();
@@ -37,8 +52,8 @@ function onInput(LoopComponent) {
     return [LoopRanges, LoopCheckbox];
 }
 
-function addListeners(LoopComponent) {
-    const listeners = [onInput(LoopComponent)];
+function addListeners() {
+    const listeners = [onInput()];
 
     for (let listener of listeners.flat()) {
         listener();

@@ -3,7 +3,9 @@ const { LoopComponentListeners } = require('./listeners');
 const { LoopComponentIntervals } = require('./intervals');
 
 const LoopComponent = LoopComponentUtils.buildLoopComponent();
-LoopComponentListeners.addListeners(LoopComponent);
-LoopComponentIntervals.setIntervals();
 
-module.exports = { LoopComponent };
+module.exports = {
+    LoopComponent,
+    addListeners: LoopComponentListeners.addListeners,
+    setIntervals: LoopComponentIntervals.setIntervals,
+};

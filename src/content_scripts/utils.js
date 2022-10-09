@@ -19,6 +19,16 @@ function insertYouLoopContainer() {
                 youloop_container,
                 below_video.firstElementChild
             );
+
+            for (let component of Components) {
+                if (component.addListeners) {
+                    component.addListeners();
+                }
+
+                if (component.setIntervals) {
+                    component.setIntervals();
+                }
+            }
         }
     }, 0);
 }
