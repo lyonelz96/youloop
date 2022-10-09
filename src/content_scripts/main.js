@@ -7,7 +7,7 @@ async function init() {
         GlobalUtils.errorLogger
     );
 
-    if (enabled) {
+    if (enabled && !ContentScriptUtils.getYouLoopContainer()) {
         ContentScriptUtils.insertYouLoopContainer();
     }
 

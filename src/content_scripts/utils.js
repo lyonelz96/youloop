@@ -1,10 +1,4 @@
 function insertYouLoopContainer() {
-    const youloop_container = getYouLoopContainer();
-
-    if (youloop_container) {
-        youloop_container.remove();
-    }
-
     const wait = setInterval(() => {
         const below_video = document.querySelector('#below');
 
