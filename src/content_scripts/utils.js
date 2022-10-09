@@ -13,7 +13,7 @@ function insertYouLoopContainer() {
 
             const { Components } = require('./components/main');
             const youloop_container = buildYouLoopContainer(
-                Components.map((c) => Object.values(c)[0])
+                Components.map((c) => c.buildComponent())
             );
             below_video.insertBefore(
                 youloop_container,
