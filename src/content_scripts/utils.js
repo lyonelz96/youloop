@@ -9,6 +9,7 @@ function insertYouLoopContainer() {
             const youloop_container = buildYouLoopContainer(
                 Components.map((c) => c.buildComponent())
             );
+
             below_video.insertBefore(
                 youloop_container,
                 below_video.firstElementChild
