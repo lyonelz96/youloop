@@ -18,16 +18,9 @@ function onChange() {
 function onClick() {
     function ToggleButton() {
         PopupUtils.getToggleButton().addEventListener('click', async () => {
-            const tabs = await browser.tabs
-                .query({
-                    active: true,
-                    currentWindow: true,
-                })
-                .catch(GlobalUtils.errorLogger);
-
-            browser.tabs.sendMessage(tabs[0].id, {
-                toggle: true,
-            });
+            await GlobalUtils.sendMessageToActiveTab({ toggle: true }).catch(
+                GlobalUtils.errorLogger
+            );
         });
     }
 

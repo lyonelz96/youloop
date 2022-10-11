@@ -11,6 +11,17 @@ async function setLoopDefaultEnable(checked) {
         .catch(errorLogger);
 }
 
+async function sendMessageToActiveTab(msg) {
+    const tabs = await browser.tabs
+        .query({
+            active: true,
+            currentWindow: true,
+        })
+        .catch(errorLogger);
+
+    await browser.tabs.sendMessage(tabs[0].id, msg).catch(errorLogger);
+}
+
 function errorLogger(e) {
     console.error(e);
 }
@@ -18,6 +29,7 @@ function errorLogger(e) {
 const GlobalUtils = {
     getLoopDefaultEnable,
     setLoopDefaultEnable,
+    sendMessageToActiveTab,
     errorLogger,
 };
 
