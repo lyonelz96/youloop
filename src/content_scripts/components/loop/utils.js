@@ -1,7 +1,7 @@
 const { ContentScriptUtils } = require('../../utils');
 const TimeFormat = require('hh-mm-ss');
 
-function buildLoopComponent() {
+function build() {
     const template = document.createElement('template');
     template.innerHTML = getInnerHTML();
     return template.content.firstElementChild;
@@ -82,7 +82,7 @@ function getLoopComponentContainer() {
 }
 
 const LoopComponentUtils = {
-    buildLoopComponent,
+    build,
     getRangesInputEl,
     getLoopComponentContainer,
     getLoopCheckbox,

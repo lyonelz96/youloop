@@ -6,8 +6,9 @@ function insertYouLoopContainer() {
             clearInterval(wait);
 
             const { Components } = require('./components/main');
+
             const youloop_container = buildYouLoopContainer(
-                Components.map((c) => c.buildComponent())
+                Components.map((c) => c.utils.build())
             );
 
             below_video.insertBefore(
@@ -16,12 +17,12 @@ function insertYouLoopContainer() {
             );
 
             for (let component of Components) {
-                if (component.addListeners) {
-                    component.addListeners();
+                if (component.listeners.addInitialListeners) {
+                    component.listeners.addInitialListeners();
                 }
 
-                if (component.setIntervals) {
-                    component.setIntervals();
+                if (component.intervals.setInitialIntervals) {
+                    component.intervals.setInitialIntervals();
                 }
             }
         }

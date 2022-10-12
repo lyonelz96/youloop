@@ -1,4 +1,4 @@
-const LoopComponent = require('../components/loop/main');
+const { LoopComponent } = require('../components/loop/main');
 
 const Components = [LoopComponent];
 
