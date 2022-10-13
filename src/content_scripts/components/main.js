@@ -1,5 +1,6 @@
-const { LoopComponent } = require('../components/loop/main');
+const { Container } = require('./container/main');
+const { Loop } = require('./loop/main');
 
-const Components = [LoopComponent];
+const Components = { Container, Loop };
 
 module.exports = { Components };

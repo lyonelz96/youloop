@@ -1,17 +1,16 @@
-const { ContentScriptUtils } = require('./utils');
-const { ContentScriptListeners } = require('./listeners');
-const { GlobalUtils } = require('../utils.js');
+const { GlobalUtils } = require('../../src/utils');
+const { Components } = require('./components/main');
 
 async function init() {
     const enabled = await GlobalUtils.getLoopDefaultEnable().catch(
         GlobalUtils.errorLogger
     );
 
-    if (enabled && !ContentScriptUtils.getYouLoopContainer()) {
-        ContentScriptUtils.insertYouLoopContainer();
+    if (enabled && !Components.Container.Utils.get()) {
+        Components.Container.Utils.insert();
     }
 
-    ContentScriptListeners.onMessage();
+    Components.Container.Listeners.OnMessage.Toggle();
 }
 
 init();

@@ -1,11 +1,7 @@
-const { LoopComponentUtils } = require('./utils');
-const { LoopComponentListeners } = require('./listeners');
-const { LoopComponentIntervals } = require('./intervals');
+const { Utils } = require('./utils');
+const { Listeners } = require('./listeners');
+const { Intervals } = require('./intervals');
 
-const LoopComponent = {
-    utils: LoopComponentUtils,
-    listeners: LoopComponentListeners,
-    intervals: LoopComponentIntervals,
-};
+const Loop = { Utils, Listeners, Intervals };
 
-module.exports = { LoopComponent };
+module.exports = { Loop };

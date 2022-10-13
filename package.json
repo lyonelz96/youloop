@@ -6,7 +6,10 @@
     "scripts": {
         "browserify": "./scripts/browserify.sh",
         "dev": "web-ext run",
-        "watch": "npm run browserify && chokidar './src/**/*.js' -i './src/**/bundle.js' -c 'npm run browserify'"
+        "watch": "npm run browserify && chokidar './src/**/*.js' -i './src/**/bundle.js' -c 'npm run browserify'",
+        "format_check": "prettier --check ./src/",
+        "format": "prettier --write ./src/",
+        "lint": "eslint_d ./src/"
     },
     "keywords": [],
     "author": "Lyonel Zamora",
@@ -15,6 +18,7 @@
         "@fsouza/prettierd": "^0.22.2",
         "chokidar-cli": "^3.0.0",
         "eslint_d": "^12.2.1",
+        "prettier": "^2.7.1",
         "web-ext": "^7.2.0"
     },
     "dependencies": {

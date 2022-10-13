@@ -1,14 +1,8 @@
-const { ContentScriptUtils } = require('../../utils');
 const TimeFormat = require('hh-mm-ss');
-
-function build() {
-    const template = document.createElement('template');
-    template.innerHTML = getInnerHTML();
-    return template.content.firstElementChild;
-}
+const { GlobalUtils } = require('../../../../src/utils');
 
 function getVideoInitialDurationFormatted() {
-    const duration = ContentScriptUtils.getYoutubeVideo().duration;
+    const duration = GlobalUtils.getYoutubeVideo().duration;
     let [start, end] = [null, null];
 
     end = TimeFormat.fromS(duration).split('.')[0];
@@ -28,7 +22,7 @@ function getInnerHTML() {
     `;
 
     const [start, end] = getVideoInitialDurationFormatted();
-    const duration = Math.trunc(ContentScriptUtils.getYoutubeVideo().duration);
+    const duration = Math.trunc(GlobalUtils.getYoutubeVideo().duration);
 
     return `
         <div id="youloop-loop-container" style="${style}">
@@ -66,26 +60,20 @@ function getInnerHTML() {
     `;
 }
 
-function getRangesInputEl() {
-    const start = document.querySelector('#youloop-loop-start');
-    const end = document.querySelector('#youloop-loop-end');
+const Utils = {
+    build: () => {
+        const template = document.createElement('template');
+        template.innerHTML = getInnerHTML();
+        return template.content.firstElementChild;
+    },
+    getRanges: () => {
+        const start = document.querySelector('#youloop-loop-start');
+        const end = document.querySelector('#youloop-loop-end');
 
-    return [start, end];
-}
-
-function getLoopCheckbox() {
-    return document.querySelector('#youloop-loop');
-}
-
-function getLoopComponentContainer() {
-    return document.querySelector('#youloop-loop-container');
-}
-
-const LoopComponentUtils = {
-    build,
-    getRangesInputEl,
-    getLoopComponentContainer,
-    getLoopCheckbox,
+        return [start, end];
+    },
+    get: () => document.querySelector('#youloop-loop-container'),
+    getCheckbox: () => document.querySelector('#youloop-loop'),
 };
 
-module.exports = { LoopComponentUtils };
+module.exports = { Utils };

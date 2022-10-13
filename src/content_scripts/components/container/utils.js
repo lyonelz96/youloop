@@ -1,0 +1,67 @@
+const Utils = {
+    insert: () => {
+        const wait = setInterval(() => {
+            const below_video = document.querySelector('#below');
+
+            if (below_video) {
+                clearInterval(wait);
+
+                const { Components } = require('../main');
+
+                const youloop_container = Utils.build(
+                    Object.keys(Components)
+                        .filter((key) => key !== 'Container')
+                        .map((key) => Components[key].Utils.build())
+                );
+
+                below_video.insertBefore(
+                    youloop_container,
+                    below_video.firstElementChild
+                );
+
+                Object.values(Components).forEach((Component) => {
+                    if (
+                        Component.Listeners &&
+                        Component.Listeners.addInitialListeners
+                    ) {
+                        Component.Listeners.addInitialListeners();
+                    }
+
+                    if (
+                        Component.Intervals &&
+                        Component.Intervals.setInitialIntervals
+                    ) {
+                        Component.Intervals.setInitialIntervals();
+                    }
+                });
+            }
+        }, 0);
+    },
+    build: (children) => {
+        const isDark = document.querySelector('html').hasAttribute('dark');
+        const textColor = isDark ? 'white' : 'black';
+
+        const style = `
+        color: ${textColor};
+        font-size: 1.5rem;
+        margin-top: 1rem;
+    `;
+
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <div id="youloop-container" style="${style}">
+            </div>
+        `;
+
+        template.content.firstElementChild.append(...children);
+
+        return template.content.firstElementChild;
+    },
+    toggle: () => {
+        const youloop_container = Utils.get();
+        youloop_container.hidden = !youloop_container.hidden;
+    },
+    get: () => document.querySelector('#youloop-container'),
+};
+
+module.exports = { Utils };

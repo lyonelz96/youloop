@@ -1,9 +1,10 @@
-const { LoopComponent } = require('./main');
 const TimeFormat = require('hh-mm-ss');
+const { Utils } = require('./utils');
+const { Intervals } = require('./intervals');
 
 const OnInput = {
-    LoopRanges: () => {
-        const ranges = LoopComponent.utils.getRangesInputEl();
+    Ranges: () => {
+        const ranges = Utils.getRanges();
 
         function getNewTime(val) {
             return TimeFormat.fromS(Number(val));
@@ -33,29 +34,29 @@ const OnInput = {
             });
         }
     },
-    LoopCheckbox: () => {
-        const checkbox = LoopComponent.utils.getLoopCheckbox();
+    Checkbox: () => {
+        const checkbox = Utils.getCheckbox();
 
         checkbox.addEventListener('input', () => {
             if (!checkbox.checked) {
-                LoopComponent.intervals.LoopInterval.clear();
+                Intervals.LoopInterval.clear();
             } else {
-                LoopComponent.intervals.LoopInterval.set();
+                Intervals.LoopInterval.set();
             }
         });
     },
 };
 
 function addInitialListeners() {
-    const listeners = [OnInput.LoopRanges, OnInput.LoopCheckbox];
+    const listeners = [OnInput.Ranges, OnInput.Checkbox];
 
-    for (let listener of listeners) {
+    for (const listener of listeners) {
         listener();
     }
 }
 
-const LoopComponentListeners = {
+const Listeners = {
     addInitialListeners,
 };
 
-module.exports = { LoopComponentListeners };
+module.exports = { Listeners };
