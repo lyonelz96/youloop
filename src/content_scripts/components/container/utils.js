@@ -83,10 +83,6 @@ const Utils = {
 
         return template.content.firstElementChild;
     },
-    toggle: () => {
-        const youloop_container = Utils.get();
-        youloop_container.hidden = !youloop_container.hidden;
-    },
     get: () => document.querySelector('#youloop-container'),
 };
 

@@ -7,7 +7,7 @@ const OnMessage = {
                 if (!Utils.get()) {
                     Utils.insert();
                 } else {
-                    Utils.toggle();
+                    Utils.remove();
                 }
             }
         });
