@@ -33,9 +33,35 @@ const Utils = {
                     ) {
                         Component.Intervals.setInitialIntervals();
                     }
+
+                    if (
+                        Component.Observers &&
+                        Component.Observers.addInitialObservers
+                    ) {
+                        Component.Observers.addInitialObservers();
+                    }
                 });
             }
         }, 0);
+    },
+    remove: () => {
+        const { Components } = require('../main');
+
+        Object.values(Components).forEach((Component) => {
+            if (Component.Intervals && Component.Intervals.clearAllIntervals) {
+                Component.Intervals.clearAllIntervals();
+            }
+
+            if (
+                Component.Observers &&
+                Component.Observers.disconnectAllObservers
+            ) {
+                Component.Observers.disconnectAllObservers();
+            }
+        });
+
+        const container = Utils.get();
+        container.remove();
     },
     build: (children) => {
         const isDark = document.querySelector('html').hasAttribute('dark');

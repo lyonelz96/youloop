@@ -44,6 +44,14 @@ function setInitialIntervals() {
     }
 }
 
-const Intervals = { setInitialIntervals, LoopInterval };
+function clearAllIntervals() {
+    const intervals = [LoopInterval];
+
+    for (const interval of intervals) {
+        interval.clear();
+    }
+}
+
+const Intervals = { setInitialIntervals, clearAllIntervals, LoopInterval };
 
 module.exports = { Intervals };
