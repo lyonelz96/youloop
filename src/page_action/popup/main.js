@@ -1,17 +1,15 @@
 const { GlobalUtils } = require('../../utils');
-const { PopupUtils } = require('./utils');
-const { PopupListeners } = require('./listeners');
+const { Utils } = require('./utils');
+const { Listeners } = require('./listeners');
 
 async function init() {
     const default_enabled = await GlobalUtils.getLoopDefaultEnable().catch(
         GlobalUtils.errorLogger
     );
 
-    PopupUtils.getDefaultEnableCheckbox().checked = default_enabled
-        ? true
-        : false;
+    Utils.getDefaultEnableCheckbox().checked = default_enabled ? true : false;
 
-    PopupListeners.addListeners();
+    Listeners.addListeners();
 }
 
 init();

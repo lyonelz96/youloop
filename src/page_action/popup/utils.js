@@ -17,10 +17,10 @@ function getToggleButton() {
     return document.querySelector('#youloop-toggle-btn');
 }
 
-const PopupUtils = {
+const Utils = {
     getDefaultEnableCheckbox,
     getToggleButton,
     toggleDefaultEnableCheckbox,
 };
 
-module.exports = { PopupUtils };
+module.exports = { Utils };
