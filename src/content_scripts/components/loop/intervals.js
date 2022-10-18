@@ -37,7 +37,7 @@ const LoopInterval = {
 };
 
 function setInitialIntervals() {
-    const intervals = [LoopInterval];
+    const intervals = [];
 
     for (const interval of intervals) {
         interval.set();

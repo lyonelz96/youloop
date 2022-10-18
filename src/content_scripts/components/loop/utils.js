@@ -28,7 +28,7 @@ function getInnerHTML() {
         <div id="youloop-loop-container" style="${style}">
             <div>
                 <label for="youloop-loop">Loop</label>
-                <input type="checkbox" id="youloop-loop" name="youloop-loop" checked>
+                <input type="checkbox" id="youloop-loop" name="youloop-loop">
             </div>
 
             <div>
