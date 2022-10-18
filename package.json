@@ -22,6 +22,7 @@
         "web-ext": "^7.2.0"
     },
     "dependencies": {
-        "hh-mm-ss": "^1.2.0"
+        "hh-mm-ss": "^1.2.0",
+        "tone": "^14.7.77"
     }
 }
