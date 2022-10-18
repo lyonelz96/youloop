@@ -71,6 +71,10 @@ const Utils = {
         color: ${textColor};
         font-size: 1.5rem;
         margin-top: 1rem;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
     `;
 
         const template = document.createElement('template');
