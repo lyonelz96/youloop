@@ -17,10 +17,10 @@ function getInnerHTML() {
                 <br>
                 <input 
                     type="range" 
-                    id="youloop-tranpose-semitones" 
+                    id="youloop-transpose-semitones" 
                     name="youloop-transpose-semitones" 
-                    min="${-12 * 8}"
-                    max="${12 * 8}"
+                    min="-12"
+                    max="12"
                     value="0"
                 >
             </div>
