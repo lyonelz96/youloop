@@ -34,8 +34,10 @@ const Utils = {
         template.innerHTML = getInnerHTML();
         return template.content.firstElementChild;
     },
-    init: () => {},
-    clear: () => {},
+    init: () => {
+        const { Listeners } = require('./listeners');
+        Listeners.addInitialListeners();
+    },
     get: () => document.querySelector('#youloop-speed-container'),
     getCheckbox: () => document.querySelector('#youloop-speed'),
     getRateRange: () => document.querySelector('#youloop-speed-rate'),
