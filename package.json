@@ -16,6 +16,7 @@
     "license": "ISC",
     "devDependencies": {
         "@fsouza/prettierd": "^0.22.2",
+        "browserify": "^17.0.0",
         "chokidar-cli": "^3.0.0",
         "eslint_d": "^12.2.1",
         "esmify": "^2.1.1",
