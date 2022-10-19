@@ -14,31 +14,11 @@ const Utils = {
                         .map((key) => Components[key].Utils.build())
                 );
 
-                below_video.insertBefore(
-                    youloop_container,
-                    below_video.firstElementChild
-                );
+                below_video.prepend(youloop_container);
 
                 Object.values(Components).forEach((Component) => {
-                    if (
-                        Component.Listeners &&
-                        Component.Listeners.addInitialListeners
-                    ) {
-                        Component.Listeners.addInitialListeners();
-                    }
-
-                    if (
-                        Component.Intervals &&
-                        Component.Intervals.setInitialIntervals
-                    ) {
-                        Component.Intervals.setInitialIntervals();
-                    }
-
-                    if (
-                        Component.Observers &&
-                        Component.Observers.addInitialObservers
-                    ) {
-                        Component.Observers.addInitialObservers();
+                    if (Component.Utils.init) {
+                        Component.Utils.init();
                     }
                 });
             }
@@ -48,19 +28,10 @@ const Utils = {
         const { Components } = require('../main');
 
         Object.values(Components).forEach((Component) => {
-            if (Component.Intervals && Component.Intervals.clearAllIntervals) {
-                Component.Intervals.clearAllIntervals();
-            }
-
-            if (
-                Component.Observers &&
-                Component.Observers.disconnectAllObservers
-            ) {
-                Component.Observers.disconnectAllObservers();
+            if (Component.Utils.clear) {
+                Component.Utils.clear();
             }
         });
-
-        Components.Transpose.Utils.reset();
 
         const container = Utils.get();
         container.remove();
@@ -88,6 +59,18 @@ const Utils = {
         template.content.firstElementChild.append(...children);
 
         return template.content.firstElementChild;
+    },
+    init: () => {
+        const { Listeners } = require('./listeners');
+        const { Observers } = require('./observers');
+
+        Listeners.addInitialListeners();
+        Observers.addInitialObservers();
+    },
+    clear: () => {
+        const { Observers } = require('./observers');
+
+        Observers.disconnectAllObservers();
     },
     get: () => document.querySelector('#youloop-container'),
 };

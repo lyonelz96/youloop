@@ -31,7 +31,7 @@ function getInnerHTML() {
     `;
 }
 
-function init() {
+function initAudioNodes() {
     const video = GlobalUtils.getYoutubeVideo();
     let source = null;
     let pitch_shift = null;
@@ -67,11 +67,18 @@ function disconnect(nodes = getNodes()) {
 
 const Utils = {
     build: () => {
-        init();
+        initAudioNodes();
 
         const template = document.createElement('template');
         template.innerHTML = getInnerHTML();
         return template.content.firstElementChild;
+    },
+    init: () => {
+        const { Listeners } = require('./listeners');
+        Listeners.addInitialListeners();
+    },
+    clear: () => {
+        Utils.reset();
     },
     connect: (nodes = getNodes()) => {
         disconnect();

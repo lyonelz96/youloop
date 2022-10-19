@@ -1,8 +1,9 @@
 const { GlobalUtils } = require('../../../utils');
-const { Utils } = require('./utils');
 
 const OnVideoChange = {
     build: () => {
+        const { Utils } = require('./utils');
+
         return new MutationObserver((mutationList) => {
             for (const mutation of mutationList) {
                 if (

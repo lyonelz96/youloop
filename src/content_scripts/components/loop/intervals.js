@@ -1,8 +1,8 @@
 const { GlobalUtils } = require('../../../../src/utils');
-const { Utils } = require('./utils');
 
 const LoopInterval = {
     set: () => {
+        const { Utils } = require('./utils');
         const video = GlobalUtils.getYoutubeVideo();
 
         const loopInterval = (ranges) =>
@@ -33,7 +33,10 @@ const LoopInterval = {
         const id = LoopInterval.getID();
         clearInterval(id);
     },
-    getID: () => Utils.get().getAttribute('loop-interval-id'),
+    getID: () => {
+        const { Utils } = require('./utils');
+        return Utils.get().getAttribute('loop-interval-id');
+    },
 };
 
 function setInitialIntervals() {

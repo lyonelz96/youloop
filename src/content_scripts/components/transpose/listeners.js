@@ -1,7 +1,6 @@
-const { Utils } = require('./utils');
-
 const OnInput = {
     SemitoneRange: () => {
+        const { Utils } = require('./utils');
         const range = Utils.getSemitoneRange();
 
         range.addEventListener('input', () => {
@@ -13,6 +12,7 @@ const OnInput = {
         });
     },
     Checkbox: () => {
+        const { Utils } = require('./utils');
         const checkbox = Utils.getCheckbox();
 
         checkbox.addEventListener('input', () => {

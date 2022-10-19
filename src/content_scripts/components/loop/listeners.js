@@ -1,9 +1,8 @@
 const TimeFormat = require('hh-mm-ss');
-const { Utils } = require('./utils');
-const { Intervals } = require('./intervals');
 
 const OnInput = {
     Ranges: () => {
+        const { Utils } = require('./utils');
         const ranges = Utils.getRanges();
 
         function getNewTime(val) {
@@ -35,6 +34,8 @@ const OnInput = {
         }
     },
     Checkbox: () => {
+        const { Utils } = require('./utils');
+        const { Intervals } = require('./intervals');
         const checkbox = Utils.getCheckbox();
 
         checkbox.addEventListener('input', () => {

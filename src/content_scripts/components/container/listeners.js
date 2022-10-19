@@ -1,7 +1,7 @@
-const { Utils } = require('./utils');
-
 const OnMessage = {
     Toggle: () => {
+        const { Utils } = require('./utils');
+
         browser.runtime.onMessage.addListener((msg) => {
             if (msg.toggle) {
                 if (!Utils.get()) {

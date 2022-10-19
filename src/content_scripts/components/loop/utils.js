@@ -66,6 +66,18 @@ const Utils = {
         template.innerHTML = getInnerHTML();
         return template.content.firstElementChild;
     },
+    init: () => {
+        const { Intervals } = require('./intervals');
+        const { Listeners } = require('./listeners');
+
+        Listeners.addInitialListeners();
+        Intervals.setInitialIntervals();
+    },
+    clear: () => {
+        const { Intervals } = require('./intervals');
+
+        Intervals.clearAllIntervals();
+    },
     getRanges: () => {
         const start = document.querySelector('#youloop-loop-start');
         const end = document.querySelector('#youloop-loop-end');
