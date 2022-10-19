@@ -47,7 +47,7 @@ const Utils = {
 
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        gap: 1rem;
     `;
 
         const template = document.createElement('template');
