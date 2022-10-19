@@ -60,6 +60,8 @@ const Utils = {
             }
         });
 
+        Components.Transpose.Utils.reset();
+
         const container = Utils.get();
         container.remove();
     },
