@@ -9,9 +9,13 @@ const OnInput = {
             const video = GlobalUtils.getYoutubeVideo();
             const label = range.labels[0];
             const rate = range.value;
+            const checkbox = Utils.getCheckbox();
 
             label.innerText = `Speed ${rate}%`;
-            video.playbackRate = rate / 100;
+
+            if (checkbox.checked) {
+                video.playbackRate = rate / 100;
+            }
         });
     },
     Checkbox: () => {
