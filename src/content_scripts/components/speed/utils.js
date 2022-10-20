@@ -1,3 +1,5 @@
+const { GlobalUtils } = require('../../../utils');
+
 function getInnerHTML() {
     const style = `
         display: flex;
@@ -37,6 +39,10 @@ const Utils = {
     init: () => {
         const { Listeners } = require('./listeners');
         Listeners.addInitialListeners();
+    },
+    clear: () => {
+        const video = GlobalUtils.getYoutubeVideo();
+        video.playbackRate = 1;
     },
     get: () => document.querySelector('#youloop-speed-container'),
     getCheckbox: () => document.querySelector('#youloop-speed'),
