@@ -4,7 +4,7 @@ YouLoop is a firefox extension that allows you to **Loop** a section of a
 youtube video, **Transpose** the audio and manage the playback **Speed** in
 order to practice a song
 
-https://user-images.githubusercontent.com/43832900/197022961-cdeb0059-d670-48df-a87c-3dd09ef35ac7.mp4
+https://user-images.githubusercontent.com/43832900/197032288-852f2c64-7853-416e-b984-1d453009190b.mp4
 
 # How To Install
 
