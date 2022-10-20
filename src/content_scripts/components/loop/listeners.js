@@ -1,4 +1,5 @@
 const TimeFormat = require('hh-mm-ss');
+const { GlobalUtils } = require('../../../utils');
 
 const OnInput = {
     Ranges: () => {
@@ -12,6 +13,8 @@ const OnInput = {
         for (let range of ranges) {
             range.addEventListener('input', () => {
                 const label = range.labels[0];
+                const video = GlobalUtils.getYoutubeVideo();
+                const checkbox = Utils.getCheckbox();
 
                 if (label.innerText.includes('Start')) {
                     const endVal = Number(ranges[1].value);
@@ -21,6 +24,10 @@ const OnInput = {
                     }
 
                     label.innerText = `Start ${getNewTime(range.value)}`;
+
+                    if (checkbox.checked) {
+                        video.currentTime = range.value;
+                    }
                 } else if (label.innerText.includes('End')) {
                     const startVal = Number(ranges[0].value);
 
@@ -29,6 +36,10 @@ const OnInput = {
                     }
 
                     label.innerText = `End ${getNewTime(range.value)}`;
+
+                    if (checkbox.checked) {
+                        video.currentTime = range.value - 2;
+                    }
                 }
             });
         }
