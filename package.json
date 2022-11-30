@@ -1,8 +1,10 @@
 {
     "name": "youloop",
     "version": "1.0.0",
-    "description": "Loop sections of youtube videos to practice music",
-    "main": "index.js",
+    "description": "Loop sections, transpose audio and manage playback speed of youtube videos to practice music",
+    "homepage": "https://github.com/lyonelz96/youloop",
+    "author": "Lyonel Zamora",
+    "license": "GPL-3.0",
     "scripts": {
         "browserify": "./scripts/browserify.sh",
         "dev": "npm run browserify && web-ext run",
@@ -11,9 +13,6 @@
         "format": "prettier --write ./src/",
         "lint": "eslint_d ./src/"
     },
-    "keywords": [],
-    "author": "Lyonel Zamora",
-    "license": "ISC",
     "devDependencies": {
         "@fsouza/prettierd": "^0.22.2",
         "browserify": "^17.0.0",
