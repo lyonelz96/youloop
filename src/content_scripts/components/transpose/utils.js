@@ -1,36 +1,6 @@
 const Tone = require('tone');
 const { GlobalUtils } = require('../../../utils');
 
-function getInnerHTML() {
-    const style = `
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    `;
-
-    return `
-        <div id="youloop-transpose-container" style="${style}">
-            <div>
-                <label for="youloop-transpose">Transpose</label>
-                <input type="checkbox" id="youloop-transpose" name="youloop-transpose">
-            </div>
-
-            <div>
-                <label for="youloop-transpose-semitones">Semitones 0</label>
-                <br>
-                <input 
-                    type="range" 
-                    id="youloop-transpose-semitones" 
-                    name="youloop-transpose-semitones" 
-                    min="-12"
-                    max="12"
-                    value="0"
-                >
-            </div>
-        </div>
-    `;
-}
-
 function initAudioNodes() {
     const video = GlobalUtils.getYoutubeVideo();
     let source = null;
@@ -69,9 +39,68 @@ const Utils = {
     build: () => {
         initAudioNodes();
 
-        const template = document.createElement('template');
-        template.innerHTML = getInnerHTML();
-        return template.content.firstElementChild;
+        const style = `
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    `;
+
+        const transpose_container = document.createElement('div');
+        GlobalUtils.setAttributes(transpose_container, {
+            id: 'youloop-transpose-container',
+            style: style,
+        });
+
+        const transpose_checkbox_container = document.createElement('div');
+
+        const transpose_checkbox_label = document.createElement('label');
+        transpose_checkbox_label.textContent = 'Transpose';
+        GlobalUtils.setAttributes(transpose_checkbox_label, {
+            for: 'youloop-transpose',
+        });
+
+        const transpose_checkbox_input = document.createElement('input');
+        GlobalUtils.setAttributes(transpose_checkbox_input, {
+            type: 'checkbox',
+            id: 'youloop-transpose',
+            name: 'youloop-transpose',
+        });
+
+        transpose_checkbox_container.append(
+            transpose_checkbox_label,
+            transpose_checkbox_input
+        );
+
+        const transpose_controls_container = document.createElement('div');
+
+        const transpose_controls_label = document.createElement('label');
+        transpose_controls_label.textContent = 'Semitones 0';
+        GlobalUtils.setAttributes(transpose_controls_label, {
+            for: 'youloop-transpose-semitones',
+        });
+
+        const transpose_controls_input = document.createElement('input');
+        GlobalUtils.setAttributes(transpose_controls_input, {
+            type: 'range',
+            id: 'youloop-transpose-semitones',
+            name: 'youloop-transpose-semitones',
+            min: -12,
+            max: 12,
+            value: 0,
+        });
+
+        transpose_controls_container.append(
+            transpose_controls_label,
+            document.createElement('br'),
+            transpose_controls_input
+        );
+
+        transpose_container.append(
+            transpose_checkbox_container,
+            transpose_controls_container
+        );
+
+        return transpose_container;
     },
     init: () => {
         const { Listeners } = require('./listeners');

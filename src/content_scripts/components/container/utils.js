@@ -1,3 +1,5 @@
+const { GlobalUtils } = require('../../../utils');
+
 const Utils = {
     insert: () => {
         const wait = setInterval(() => {
@@ -50,15 +52,15 @@ const Utils = {
         gap: 1rem;
     `;
 
-        const template = document.createElement('template');
-        template.innerHTML = `
-            <div id="youloop-container" style="${style}">
-            </div>
-        `;
+        const youloop_container = document.createElement('div');
+        GlobalUtils.setAttributes(youloop_container, {
+            id: 'youloop-container',
+            style: style,
+        });
 
-        template.content.firstElementChild.append(...children);
+        youloop_container.append(...children);
 
-        return template.content.firstElementChild;
+        return youloop_container;
     },
     init: () => {
         const { Listeners } = require('./listeners');

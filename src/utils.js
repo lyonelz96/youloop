@@ -26,6 +26,11 @@ const GlobalUtils = {
     },
     errorLogger: (e) => console.error(e),
     getYoutubeVideo: () => document.querySelector('video'),
+    setAttributes: (element, attributes) => {
+        Object.keys(attributes).forEach((attr) =>
+            element.setAttribute(attr, attributes[attr])
+        );
+    },
 };
 
 module.exports = { GlobalUtils };
