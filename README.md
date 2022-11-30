@@ -6,6 +6,15 @@ order to practice a song
 
 https://user-images.githubusercontent.com/43832900/197032288-852f2c64-7853-416e-b984-1d453009190b.mp4
 
+# Permissions
+
+## Storage
+I use this in order to save user settings between uses
+
+## Tabs
+I use this in order to send messages from the page action to the current tab
+that has youtube open
+
 # How To Install
 
 I haven't looked into publishing the extension yet so at the moment the only
