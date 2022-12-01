@@ -1,7 +1,7 @@
 {
     "name": "youloop",
     "version": "1.0.0",
-    "description": "Loop sections, transpose audio and manage playback speed of youtube videos to practice music",
+    "description": "Loop a section, transpose audio and manage playback speed of youtube videos to practice music",
     "homepage": "https://github.com/lyonelz96/youloop",
     "author": "Lyonel Zamora",
     "license": "GPL-3.0",
