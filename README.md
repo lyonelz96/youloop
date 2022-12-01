@@ -56,6 +56,13 @@ You need atleast [Node.js 18.12.0 LTS](https://nodejs.org/en/)
 
 I have some scripts that you can run in the `package.json` for convenience
 
+## Build
+
+-   `npm run build`
+    - Installs any missing node packages, runs the browserify script below to
+    bundle up code and then uses web-ext to package the extension into a `.zip`
+    file
+
 ## Browserify
 
 -   `npm run browserify`
