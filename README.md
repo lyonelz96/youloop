@@ -21,6 +21,8 @@ I haven't looked into publishing the extension yet so at the moment the only
 way to use it as far as I'm concerned is by manually testing it out with the
 `about:debugging` page
 
+You need atleast [Node.js 18.12.0 LTS](https://nodejs.org/en/)
+
 1. Clone/Download the repo whichever way you want
 2. `cd youloop && npm i && npm run browserify`
 2. Open firefox and go to `about:debugging`
@@ -45,6 +47,8 @@ whenever you go to a youtube video, otherwise you have to manually toggle it
 Toggles youloop on and off
 
 # How To Work With It Locally
+
+You need atleast [Node.js 18.12.0 LTS](https://nodejs.org/en/)
 
 1. Clone the repo whichever way you want
 2. `cd youloop && npm i`
