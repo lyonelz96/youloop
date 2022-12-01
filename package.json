@@ -6,7 +6,7 @@
     "author": "Lyonel Zamora",
     "license": "GPL-3.0",
     "scripts": {
-        "build": "npm i && npm run browserify && npx web-ext build -i ./scripts -o",
+        "build": "npm i && npm run browserify && npx web-ext build -i ./scripts ./assets -o",
         "browserify": "./scripts/browserify.sh",
         "dev": "npm run browserify && web-ext run",
         "watch": "npm run browserify && chokidar './src/**/*.js' -i './src/**/bundle.js' -c 'npm run browserify'",
