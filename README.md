@@ -17,9 +17,12 @@ that has youtube open
 
 # How To Install
 
-I haven't looked into publishing the extension yet so at the moment the only
-way to use it as far as I'm concerned is by manually testing it out with the
-`about:debugging` page
+## Firefox Way
+https://addons.mozilla.org/en-US/firefox/addon/youloop/
+
+## Dev Way
+
+Testing it out with the `about:debugging` page
 
 You need atleast [Node.js 18.12.0 LTS](https://nodejs.org/en/)
 
